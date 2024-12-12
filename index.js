@@ -1,14 +1,16 @@
 
 
-const express=require("express")
+const express=require("express");
 const app=express();
 const port=8000;
-const sturoute=require("./routes/studentRoutes")
+const stuRoute=require("./routes/studentRoutes")
+const teacRoute=require("./routes/teacherRoutes")
 
-app.use("/student",sturoute)
+
+app.use("/students",stuRoute);
+app.use("/teacher",teacRoute)
 
 
 app.listen(port,()=>{
-`this is server on${port}`})
-
-
+      console.log(`server on ${port}`)
+})
