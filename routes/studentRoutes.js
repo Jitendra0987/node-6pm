@@ -1,21 +1,11 @@
 
 const express=require("express");
 const route=express.Router();
+const stuControler=require("../controler/studentControler")
 
-route.get("/stuhome",(req,res)=>{
-       res.send(" this is home page ")
-})
-
-route.get("/stuclass",(req,res)=>{
-         res.send("<h1> this is class page </h1>")
-})
-
-route.get("/stufees",(req,res)=>{
-    res.send("<h1> this is fees page </h1>")
-})
-
-route.get("/sturesult",(req,res)=>{
-    res.send("<h1> this is class page </h1>")
-})
+route.get("/stuhome",stuControler.stuhome);
+route.get("/stusubject",stuControler.stuSubject);
+route.get("/sturesult",stuControler.stuResult);
+route.get("/stufees",stuControler.stuFees)
 
 module.exports=route;
