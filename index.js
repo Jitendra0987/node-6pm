@@ -1,9 +1,12 @@
 const express=require("express");
 const app=express();
 const port=8000;
-const stuRoute=require("./routes/studentRoutes")
-
-app.use("/students",stuRoute);
+const Emproute=require("./routes/empRoutes")
 
 
-app.listen(port)
+app.set("view engine","ejs")
+app.use("/",Emproute)
+
+app.listen(port,()=>{
+    console.log(`server is on${port}`)
+})
