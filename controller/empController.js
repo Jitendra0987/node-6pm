@@ -1,34 +1,34 @@
+const EmpModel=require("../model/empModel")
 
-const insert=(req,res)=>{
-        res.render("Insert")
+const emphome=(req,res)=>{
+    res.render("home")
+}
+const empinsert=(req,res)=>{
+   res.render("Insert")
+}
+const empdisplay=(req,res)=>{
+    res.render("Display")
+}
+const empcontact=(req,res)=>{
+     res.render("Contact")
 }
 
-const home=(req,res)=>{
-         res.render("Home")
-}
-const about=(req,res)=>{
-    res.render("About")
-}
-const contact=(req,res)=>{
-    res.render("Contact")
-}
-
-
-const studatasave=(req,res)=>{
-        const {eno, nm ,ct , sal } = req.body;
+const empDataSave=(req,res)=>{
+        const {eno,nm,ct,sal}=req.body;
+        
         EmpModel.create({
             empno:eno,
             name:nm,
             city:ct,
             salary:sal
-
         })
+        
         res.render("Insert")
 }
-
 module.exports={
-    home,
-    about,
-    contact,
-    insert
+    emphome,
+    empinsert,
+    empdisplay,
+    empcontact,
+    empDataSave
 }

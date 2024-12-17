@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +6,24 @@
     <title>Document</title>
 </head>
 <body bgcolor="red">
-
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a href="/insert">Insert</a>
-    <h1> this is insert page</h1>
     
-       <from>
-            
-         Enter Empno :<input type="text"> <br>
-         Enter name :<input type="text"> <br>
-         Enter city :<input type="text"> <br>
-         Enter Salary :<input type="text"> <br>
-         <button>Submit</button>
-       </from>
+    <a href="/">Home</a>
+    <a href="/insert">Insert</a>
+    <a href="/display">Display</a>
+    <a href="/contact">Contact</a>
+
+    <h1> this is a insert page</h1>
+
+
+    <form method="post" action="/datasave">
+       
+        Enter empno<input type="text" name="eno"/>
+        Enter name<input type="text" name="nm"/>
+        Enter city<input type="text" name="ct"/>
+        Enter salary <input type="text" name="sal"/>
+        <button>submit</button>
+
+    </form>
+
 </body>
 </html>
