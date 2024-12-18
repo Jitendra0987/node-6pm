@@ -3,22 +3,20 @@ const app=express();
 const port=8000;
 const empRout=require("./routes/empRoute");
 const mongoose=require("mongoose");
-const bodyparser=require("body-parser");
-mongoose.connect("mongodb://127.0.0.1:27017/nagin").then(()=>{
-    console.log("db Connected!!!!")
+const bodyParser = require("body-parser");
+
+mongoose.connect("mongodb://127.0.0.1:27017/bholla").then(()=>{
+    console.log("db connected!!!!!!")
 })
+app.set("view engine","ejs")
+// body_parser middleware
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json())
 
 
-
-app.set("view engine", "ejs")
-// Body-parser middleware
-app.use(bodyparser.urlencoded({ extended: true }))
-app.use(bodyparser.json())
-
-
-app.use("/",empRout)
+app.use("/",empRout);
 
 
 app.listen(port,()=>{
-    console.log(`server on port ${port}`)
+    console.log(`server on ${port}`)
 })

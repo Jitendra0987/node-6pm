@@ -1,11 +1,14 @@
+
 const express=require("express");
 const route=express.Router();
-const  empCont=require("../controller/empController")
+const empContor=require("../controller/empController");
 
-route.get("/",empCont.emphome);
-route.get("/insert",empCont.empinsert);
-route.get("/display",empCont.empdisplay);
-route.get("/contact",empCont.empcontact);
-route.post("/datasave",empCont.empDataSave);
+
+
+route.get("/",empContor.empHome);
+route.get("/insert",empContor.empInsert);
+route.get("/display",empContor.empDisplay);
+route.get("/contact",empContor.empContact);
+route.post("/datasave",empContor.empDatasave);
 
 module.exports=route;
