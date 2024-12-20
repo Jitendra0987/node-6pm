@@ -13,5 +13,28 @@
     <a href="/contact">Contact</a>
     <h1>this is display page</h1>
     
+
+    <table border="1" bgcolor="pink" align="center">
+        <tr>
+            <th> Emp No</th>
+            <th> Name</th>
+            <th> City</th>
+            <th> Salary</th>
+        </tr>
+
+    <%
+        Data.forEach((key)=>{
+        %>
+        <tr>
+            <td> <%=key.empno %></td>
+            <td> <%=key.name %></td>
+            <td> <%=key.city %></td>
+            <td> <%=key.salary %></td>
+        </tr>
+        <%
+            })
+        %>
+    </table>
+
 </body>
 </html>
