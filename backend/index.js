@@ -4,6 +4,7 @@ const app=express();
 const port=8000;
 const bodyparser = require('body-parser')
 const cors=require("cors")
+const setMid=require("./middleWear/middleWear.js")
 
 
 app.use(cors());
@@ -29,14 +30,7 @@ app.get("/about",(req,res )=>{
     
 })
 
-app.get("/contact",(req,res,next)=>{
-    console.log("contact middlewear -1 ")
-    next();
-},(req,res,next)=>{
-    console.log("Contact middleWear -2 ");
-    next();
-    
-},(req,res)=>{
+app.get("/contact",setMid.contactMidlewaer1,setMid.contactMidlewaer2,(req,res)=>{
     console.log("server page");
     res.send("ok")
 })
