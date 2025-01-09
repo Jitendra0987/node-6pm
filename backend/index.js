@@ -16,19 +16,10 @@ app.use(( req, res, next)=>{
     next();
 })
 
-app.use(( req, res, next)=>{
-    console.log("aAPP LEVEL MIDDLEWEAR-2")
-    next();
-})
 
 app.get("/home",(req,res, next)=>{
     console.log("Home page")
     res.send("ok");
-    next();
-})
-
-app.use(( req, res, next)=>{
-    console.log("aAPP LEVEL MIDDLEWEAR-3")
     next();
 })
 
@@ -38,6 +29,22 @@ app.get("/about",(req,res )=>{
     
 })
 
+app.get("/contact",(req,res,next)=>{
+    console.log("contact middlewear -1 ")
+    next();
+},(req,res,next)=>{
+    console.log("Contact middleWear -2 ");
+    next();
+    
+},(req,res)=>{
+    console.log("server page");
+    res.send("ok")
+})
+
+app.get("/delete",(req,res )=>{
+    console.log("delete page")
+    res.send("ok")
+})
 
 app.listen(port,()=>{
     console.log(`server on port${port}`)
