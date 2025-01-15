@@ -1,17 +1,7 @@
 
 
-const contactMidlewaer1=(req,res,next)=>{
-    console.log("service Midlewear-1");
-    next();
-}
+const myErrorHandler=((err,req,res,next)=>{
+    res.status(500).send(err.message);
+})
 
-const contactMidlewaer2=(req,res,next)=>{
-    console.log("service Midlewear-2");
-    next();
-}
-
-module.exports={
-    contactMidlewaer1,
-    contactMidlewaer2
-
-}
+module.exports= myErrorHandler;

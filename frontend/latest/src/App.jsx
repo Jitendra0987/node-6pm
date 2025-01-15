@@ -1,50 +1,44 @@
 import axios from "axios"
 
+
 const App=()=>{
-
-  const loadData1=()=>{
-    let api="http://localhost:8000/home";
-    axios.get(api ).then((res)=>{
-        console.log(res.data)
-    })
-
-  }
-
-  const loadData2=()=>{
-    let api="http://localhost:8000/about";
-    axios.get(api ).then((res)=>{
-      console.log(res.data)
+  
+  const handlesubmit=async()=>{
+    try {
     
-    })
-
-  }
-
-  const loadData3=()=>{
-    let api="http://localhost:8000/contact";
-    axios.get(api ).then((res)=>{
-      console.log(res.data)
+      let api="http://localhost:8000/home";
+      const response= await axios.get(api);
+         console.log(response.data);
+      
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data)
+      
+    }
     
-    })
+      }
 
-  }
 
-  const loadData4=()=>{
-    let api="http://localhost:8000/delete";
-    axios.get(api ).then((res)=>{
-      console.log(res.data)
-    
-    })
-
-  }
-
+      const handlesubmit1=async()=>{
+        try {
+        
+          let api="http://localhost:8000/about";
+          const response= await axios.get(api);
+             console.log(response.data);
+          
+        } catch (error) {
+          console.log(error);
+          alert(error.response.data)
+          
+        }
+      }
   return(
     <>
-      <h1>Middlewear </h1>
-         <button onClick={()=>{loadData1()}}>Home</button>
-         <button onClick={()=>{loadData2()}}>About</button>
-         <button onClick={()=>{loadData3()}}>Contact</button>
-         <button onClick={()=>{loadData4()}}>Delete</button>
+    
+    <button onClick={handlesubmit}> Click here</button>
+    <button onClick={handlesubmit1}>about page here</button>
+
     </>
   )
 }
- export default App;
+export default App;

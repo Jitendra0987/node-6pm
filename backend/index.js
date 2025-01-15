@@ -12,34 +12,21 @@ app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 
-app.use(( req, res, next)=>{
-    console.log("aAPP LEVEL MIDDLEWEAR-1")
+app.get("/home",(req,res,next)=>{
+    // throw new Error("home error genrate in home page  !!!")
+    res.send("ok hai");
     next();
 })
 
 
-app.get("/home",(req,res, next)=>{
-    console.log("Home page")
-    res.send("ok");
+app.use("/about",(req,res,next)=>{
+    throw new Error("about page error !!!")
+    res.send("my about page");
     next();
 })
 
-app.get("/about",(req,res )=>{
-    console.log("about page")
-    res.send("ok");
-    
-})
 
-app.get("/contact",setMid.contactMidlewaer1,setMid.contactMidlewaer2,(req,res)=>{
-    console.log("server page");
-    res.send("ok")
-})
-
-app.get("/delete",(req,res )=>{
-    console.log("delete page")
-    res.send("ok")
-})
-
+app.use(setMid)
 app.listen(port,()=>{
     console.log(`server on port${port}`)
 })
