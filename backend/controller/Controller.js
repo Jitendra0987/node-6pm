@@ -1,33 +1,25 @@
-const userModel=require("../models/UserModel")
-const profileModel=require("../models/Profile")
+const StuModel=require("../models/UserModel")
 
+const dataSaved=async(req,res)=>{
+  const{ stuname, rollno, city, email, imgname}=req.body;
 
-const userSave=async(req,res)=>{
-    // console.log(req.body)
-    const {username, email, firstname,lastname}=req.body;
-      const User=await userModel.create({
-        username:username,
-        email:email
-      })
+  const Data= await StuModel.create({
+    stuname:stuname,
+    rollno:rollno,
+    city:city,
+    email:email,
+    imgname:imgname
+  })
+  res.send("ok")
 
-      const profi= await profileModel.create({
-        firstname:firstname,
-        lastname:lastname,
-        userid:User._id
-    })
-
-  res.status(200).send("user created")
 }
 
-   const userDisplay=async(req,res)=>{
-         const Data= await profileModel.find().populate("userid")
-         res.send(Data);
-        // res.send("okk")
-        
-
-   }
+  const dataDisplayed=async(req,res)=>{
+    const Data= await StuModel.find();
+    res.send(Data);
+  }
 
 module.exports={
-    userSave,
-    userDisplay
+    dataSaved,
+    dataDisplayed
 }

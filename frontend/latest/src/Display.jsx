@@ -1,51 +1,56 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import axios  from "axios";
 
 
 const Display=()=>{
-  const [mydata, setMydata]=useState([]);
+   const [mydata, setMydata]=useState([])
+    const loadData=async()=>{
+
+        let api="http://localhost:8000/cloudnary/dataDisplay";
+        const response = await axios.get(api)
+                 console.log(response.data)
+                 setMydata(response.data)
+    
+    }
 
 
-  const loadData=async()=>{
-    let api= "http://localhost:8000/user/userdisplay"
-
-     const response= await axios.get(api);
-     console.log(response.data)
-    setMydata(response.data)
-
-  }  
-  useEffect(()=>{
-         loadData();
-  },[])
+    useEffect(()=>{
+             loadData();
+    },[])
 
 
 
-  const ans=mydata.map((key)=>{
+      const ans =mydata.map((key)=>{
+        return(
+            <>
+            <tr>
+                <td>{key.stuname}</td>
+                <td>{key.rollno}</td>
+                <td>{key.city}</td>
+                <td>{key.email}</td>
+                <td>
+                    <img src={key.imgname} width="200px" height="150px" />
+                </td>
+            </tr>
+            </>
+        )
+
+     })
+
     return(
-      <>
-      <tr>
-        <td>  {key.firstname} {key.lastname}</td>
-       <td>{key.userid.email}</td>
-       <td>{key.userid.username}</td>
-      </tr>
-      </>
+        <>
+        <table>
+            <tr>
+                <th>name</th>
+                <th>rollno</th>
+                <th>city</th>
+                <th>email</th>
+                <th></th>
+            </tr>
+            {ans}
+
+        </table>
+        </>
     )
-
-  })
-
-  return(
-    <>
-    <h1>Display User Detail</h1>
-         <table border="1" width="600">
-             <tr>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>User ID name</th>
-             </tr>
-             {ans}
-         </table>
-
-    </>
-  )
 }
 export default Display;

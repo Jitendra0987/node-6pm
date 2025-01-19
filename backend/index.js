@@ -8,7 +8,7 @@ const route=require("./Routes/Route");
 const mongoose =require("mongoose")
 
 
-mongoose.connect("mongodb://127.0.0.1:27017/relationship").then((res)=>{
+mongoose.connect("mongodb://127.0.0.1:27017/cludData").then((res)=>{
     console.log("DB connectedd!!")
 })
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 
-app.use("/user",route);
+app.use("/cloudnary",route);
 
 
 app.listen(port,()=>{
