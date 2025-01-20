@@ -1,8 +1,8 @@
 const express=require("express");
-const Route=express.Router();
+const route=express.Router();
 const controll=require("../controller/Controller")  
 
-Route.post("/datasave",controll.dataSaved)
-Route.get("/dataDisplay",controll.dataDisplayed)
+route.post("/datasave",controll.dataSaved)
+route.get("/dataDisplay",controll.dataDisplayed)
 
-module.exports=Route;
+module.exports=route;
